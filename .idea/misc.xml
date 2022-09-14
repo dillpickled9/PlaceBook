@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dillp/AndroidStudioProjects/PlaceBook/app/src/main/res/layout/activity_bookmark_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/dillp/AndroidStudioProjects/PlaceBook/app/src/main/res/layout/activity_maps.xml" value="0.18034447821681865" />
         <entry key="..\:/Users/dillp/AndroidStudioProjects/PlaceBook/app/src/main/res/layout/content_bookmark_info.xml" value="0.2859375" />
+        <entry key="..\:/Users/dillp/AndroidStudioProjects/PlaceBook/app/src/main/res/menu/menu_bookmark_details.xml" value="0.25885416666666666" />
       </map>
     </option>
   </component>

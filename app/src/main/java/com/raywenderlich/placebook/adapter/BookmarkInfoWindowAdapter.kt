@@ -7,8 +7,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import com.raywenderlich.placebook.databinding.ContentBookmarkInfoBinding
 import com.raywenderlich.placebook.ui.MapsActivity
+import com.raywenderlich.placebook.viewmodel.MapsViewModel
 
-class BookmarkInfoWindowAdapter(context: Activity) :
+class BookmarkInfoWindowAdapter(val context: Activity) :
     GoogleMap.InfoWindowAdapter {
 
     private val binding =
@@ -16,7 +17,18 @@ class BookmarkInfoWindowAdapter(context: Activity) :
 
     override fun getInfoWindow(marker: Marker): View? {
         val imageView = binding.photo
-        imageView.setImageBitmap((marker.tag as MapsActivity.PlaceInfo).image)
+        when (marker.tag){
+            is MapsActivity.PlaceInfo -> {
+                imageView.setImageBitmap((marker.tag as MapsActivity.PlaceInfo).image)
+            }
+            is MapsViewModel.BookmarkMarkerView -> {
+                val bookMarkview = marker.tag as
+                        MapsViewModel.BookmarkMarkerView
+                imageView.setImageBitmap(bookMarkview.getImage(context))
+            }
+        }
+
+        //imageView.setImageBitmap((marker.tag as MapsActivity.PlaceInfo).image)
         // This function is required, but can return null if
         // not replacing the entire info window
         return null
