@@ -37,6 +37,7 @@ class BookmarkDetailsViewModel(application: Application) :
 
     private val bookmarkRepo = BookmarkRepo(getApplication())
 
+    //converts bookmark model to a bookmark details view
     private fun bookmarkToBookmarkView(bookmark: Bookmark):
             BookmarkDetailsView{
         return BookmarkDetailsView(

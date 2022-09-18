@@ -64,6 +64,7 @@ class MapsViewModel(application: Application) :
         return bookmarks
     }
 
+
     data class BookmarkView(
         var id: Long? = null,
         var location: LatLng = LatLng(0.0, 0.0),
@@ -72,6 +73,7 @@ class MapsViewModel(application: Application) :
         var categoryResourceId: Int? = null
 
     ) {
+        //body for data class
         fun getImage(context: Context) = id?.let {
             ImageUtils.loadBitmapFromFile(context,
                 Bookmark.generateImageFilename(it))

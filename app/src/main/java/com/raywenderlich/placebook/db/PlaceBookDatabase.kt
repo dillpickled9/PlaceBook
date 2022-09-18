@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.raywenderlich.placebook.model.Bookmark
 
+//updated database annotation version
 @Database(entities = arrayOf(Bookmark::class), version = 3)
 abstract class PlaceBookDatabase : RoomDatabase() {
 
@@ -18,6 +19,7 @@ abstract class PlaceBookDatabase : RoomDatabase() {
         fun getInstance(context: Context): PlaceBookDatabase {
             if (instance == null) {
 
+                //calls builder and tells room to create a new empty database
                 instance = Room.databaseBuilder(context.applicationContext,
                     PlaceBookDatabase::class.java, "PlaceBook")
                     .fallbackToDestructiveMigration()

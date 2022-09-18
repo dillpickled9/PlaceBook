@@ -253,6 +253,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
+        //saved bookmark if a new one is clicked or takes user to existing bookmark
         private fun handleInfoWindowClick(marker: Marker) {
             when (marker.tag) {
                 is PlaceInfo -> {
@@ -317,14 +318,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     class PlaceInfo(val place: Place? = null,
                     val image: Bitmap? = null)
 
+    //used to start bookmark detail activity when user taps on info from bookmark
     private fun startBookmarkDetails(bookmarkId: Long){
         val intent = Intent(this, BookmarkDetailsActivity::class.java)
         intent.putExtra(EXTRA_BOOKMARK_ID, bookmarkId)
         startActivity(intent)
     }
 
+    //enables tool bar
     private fun setupToolbar(){
         setSupportActionBar(databinding.mainMapView.toolbar)
+        //created toggle button for toolbar
         val toggle = ActionBarDrawerToggle(
             this, databinding.drawerLayout,
             databinding.mainMapView.toolbar,
@@ -340,11 +344,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             bookmarkListAdapter
     }
 
+    //used to center zoom a location in our map
     private fun updateMapToLocation(location: Location){
         val latLng = LatLng(location.latitude, location.longitude)
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f))
     }
 
+    //closes navigation drawer and zooms to bookmark location
     fun moveToBookmark(bookmark: MapsViewModel.BookmarkView) {
 
         databinding.drawerLayout.closeDrawer(databinding.drawerViewMaps.

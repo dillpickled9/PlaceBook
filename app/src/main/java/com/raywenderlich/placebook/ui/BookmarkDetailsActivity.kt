@@ -61,6 +61,7 @@ class BookmarkDetailsActivity : AppCompatActivity(),
             })
     }
 
+    //loads image from bookmarkView and sets image view place
     private fun populateImageView() {
         bookmarkDetailsView?.let { bookmarkView ->
             val placeImage = bookmarkView.getImage(this)
@@ -111,6 +112,7 @@ class BookmarkDetailsActivity : AppCompatActivity(),
             else -> super.onOptionsItemSelected(item)
         }
 
+    //lets user take their own picture or use existing one
     override fun onCaptureClick() {
         photoFile = null
         try {
@@ -149,6 +151,7 @@ class BookmarkDetailsActivity : AppCompatActivity(),
         startActivityForResult(pickIntent, REQUEST_GALLERY_IMAGE)
     }
 
+    //used to replace bookmark image
     private fun replaceImage() {
         val newFragment = PhotoOptionDialogFragment.newInstance(this)
         newFragment?.show(supportFragmentManager, "photoOptionDialog")

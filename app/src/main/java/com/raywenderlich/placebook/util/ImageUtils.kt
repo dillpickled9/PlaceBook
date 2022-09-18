@@ -44,6 +44,7 @@ object ImageUtils {
 
     }
 
+    //passes context and filename to create a file path
     fun loadBitmapFromFile(context: Context, filename: String):
             Bitmap? {
         val filePath = File(context.filesDir, filename).absolutePath
