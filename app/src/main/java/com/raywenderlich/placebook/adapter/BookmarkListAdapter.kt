@@ -37,18 +37,20 @@ class BookmarkListAdapter(
     }
     override fun onBindViewHolder(holder: ViewHolder, position:
     Int) {
-        // 5
+
         bookmarkData?.let { list->
             val bookmarkViewData = list[position]
-            // 7
+
             holder.binding.root.tag = bookmarkViewData
             holder.binding.bookmarkData = bookmarkViewData
 
-            holder.binding.bookmarkIcon.setImageResource(R.drawable.ic_other
-            )
+            bookmarkViewData.categoryResourceId?.let{
+                holder.binding.bookmarkIcon.setImageResource(it)
+            }
+
         }
     }
 
-    // 8
+
     override fun getItemCount() = bookmarkData?.size ?: 0
 }
