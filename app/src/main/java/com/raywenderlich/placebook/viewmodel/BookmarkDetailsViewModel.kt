@@ -2,6 +2,7 @@ package com.raywenderlich.placebook.viewmodel
 
 import android.app.Application
 import android.content.Context
+import android.graphics.Bitmap
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -58,6 +59,13 @@ data class BookmarkDetailsView(
         ImageUtils.loadBitmapFromFile(context,
             Bookmark.generateImageFilename(it))
     }
+
+    fun setImage(context: Context, image: Bitmap) {
+        id?.let {
+            ImageUtils.saveBitmapToFile(context, image,
+                Bookmark.generateImageFilename(it))
+        }
+    }
 }
 
     private fun bookmarkViewToBookmark(bookmarkView:
@@ -76,13 +84,15 @@ data class BookmarkDetailsView(
     }
 
     fun updateBookmark(bookmarkView: BookmarkDetailsView) {
-        // 1
+
         GlobalScope.launch {
-            // 2
+
             val bookmark = bookmarkViewToBookmark(bookmarkView)
-            // 3
+
             bookmark?.let { bookmarkRepo.updateBookmark(it) }
         }
     }
+
+
 
     }
